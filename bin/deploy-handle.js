@@ -15,6 +15,8 @@ async function executePatchCommand(opts){
     await PromiseProcessHandler(spawn('git', ['push','origin',`release/v${opts.newVersion}:release/v${opts.newVersion}`]))
 }
 
+program.parse(process.argv)
+if (program.args.length < 1) return
 
 let oldVersion = program.args[0]
 let newVersion = program.args[1]
