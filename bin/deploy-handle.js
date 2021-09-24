@@ -11,46 +11,55 @@ async function executePatchCommand(opts){
     spinner.text = 'git checkout master'
     await PromiseProcessHandler(spawn('git', ['checkout','master'])).catch(()=>{
         spinner.fail(spinner.text)
+        process.exit(1)
     })
 
     spinner.text = `git pull`
     await PromiseProcessHandler(spawn('git', ['pull'])).catch(()=>{
         spinner.fail(spinner.text)
+        process.exit(1)
     })
 
     spinner.text = `git merge --no-ff origin/release/v${opts.oldVersion}`
     await PromiseProcessHandler(spawn('git', ['merge','--no-ff',`origin/release/v${opts.oldVersion}`])).catch(()=>{
         spinner.fail(spinner.text)
+        process.exit(1)
     })
 
     spinner.text = `git pull`
     await PromiseProcessHandler(spawn('git', ['pull'])).catch(()=>{
         spinner.fail(spinner.text)
+        process.exit(1)
     })
 
     spinner.text = `git push`
     await PromiseProcessHandler(spawn('git', ['push'])).catch(()=>{
         spinner.fail(spinner.text)
+        process.exit(1)
     })
 
     spinner.text = `git tag -a v${opts.oldVersion} -m ${opts.annotation}`
     await PromiseProcessHandler(spawn('git', ['tag','-a',`v${opts.oldVersion}`,'-m',`${opts.annotation}`])).catch((error)=>{
         spinner.fail(spinner.text+'\n\r'+error)
+        process.exit(1)
     })
 
     spinner.text = `git push origin v${opts.oldVersion}`
     await PromiseProcessHandler(spawn('git', ['push','origin',`v${opts.oldVersion}`])).catch(()=>{
         spinner.fail(spinner.text)
+        process.exit(1)
     })
 
     spinner.text = `git branch release/v${opts.newVersion}`
     await PromiseProcessHandler(spawn('git', ['branch',`release/v${opts.newVersion}`])).catch(()=>{
         spinner.fail(spinner.text)
+        process.exit(1)
     })
 
     spinner.text = `git push origin release/v${opts.newVersion}:release/v${opts.newVersion}`
     await PromiseProcessHandler(spawn('git', ['push','origin',`release/v${opts.newVersion}:release/v${opts.newVersion}`])).catch(()=>{
         spinner.fail(spinner.text)
+        process.exit(1)
     })
     spinner.succeed()
     
