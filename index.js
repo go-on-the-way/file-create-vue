@@ -10,6 +10,7 @@ program
   .version(require('./package').version)
   .usage('<command> [options]')
   .command('vue', 'generate a vue file',{ executableFile: './bin/create-vue' })
+  .command('deploy-handle', '上线后的处理',{ executableFile: './bin/deploy-handle' })
 
 
 program.parse(process.argv)
