@@ -5,12 +5,7 @@ const { spawn } = require('child_process');
 let { PromiseProcessHandler } = require('../private/util')
 
 async function executePatchCommand(opts){
-    let spinner = ora(`处理中....
-        
-        7、\n\r
-        8、\n\r
-        9、
-    `).start()
+    let spinner = ora(`处理中....`).start()
     
     
     spinner.text = 'git checkout master'
