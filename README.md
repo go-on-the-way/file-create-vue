@@ -1,8 +1,8 @@
 ### 创建VUE单文件
 
 #### 安装
-`npm install link-create-vue -D`  
-`npm install -g link-create-vue`
+`npm install file-create-vue -D`  
+`npm install -g file-create-vue`
 
 #### 使用
 `file-create vue MyVueComponent`
