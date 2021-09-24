@@ -34,7 +34,7 @@ async function executePatchCommand(opts){
     })
 
     spinner.text = `git tag -a v${opts.oldVersion} -m ${opts.annotation}`
-    await PromiseProcessHandler(spawn('git', ['tag','-a',`v${opts.oldVersion}`,'-m',opts.annotation])).catch(()=>{
+    await PromiseProcessHandler(spawn('git', ['tag','-a',`v${opts.oldVersion}`,'-m',`${opts.annotation}`])).catch(()=>{
         spinner.fail(spinner.text)
     })
 
