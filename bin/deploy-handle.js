@@ -30,6 +30,7 @@ async function executePatchCommand(opts){
         await PromiseProcessHandler(spawn('git', ['push','origin',`release/v${opts.newVersion}:release/v${opts.newVersion}`]))
         lqProcess.succeed()
     } catch (error) {
+        console.log(error)
         lqProcess.fail()
     }
 }
